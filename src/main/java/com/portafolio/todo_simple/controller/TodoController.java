@@ -21,6 +21,12 @@ public class TodoController
         return todoService.getTodoById(id);
 
     }
+ce
+
+    public Todo getTodoById(int id) {
+        return todoRepository.findById(id)
+                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "TODO not found"));
+    }
 
     @PostMapping
      public Todo createTodo(@RequestBody  Todo newTodo) {
