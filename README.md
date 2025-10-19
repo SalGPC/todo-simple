@@ -1,4 +1,4 @@
-A simple y REST API for managing to-do tasks, built with
+A simple  REST API for managing to-do tasks, built with
 Spring Boot, Spring Security (JWT), and MySQL, with full Docker support.
 
 - JWT-based authentication
