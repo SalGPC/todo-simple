@@ -6,4 +6,4 @@ Spring Boot, Spring Security (JWT), and MySQL, with full Docker support.
 - MySQL database integration
 - Docker & Docker Compose ready
 
-  Built as a personal project to practice backend development and containerization with Docker
+Built as a personal project to practice backend development, testing and containerization with Docker
