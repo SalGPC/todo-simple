@@ -1,0 +1,32 @@
+version: '3.8'
+
+services:
+  mysql-container:
+    image: mysql:8.0
+    container_name: mysql-container
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: dockerpass
+      MYSQL_DATABASE: todo_db
+      MYSQL_USER: springstudent
+      MYSQL_PASSWORD: springstudent
+    ports:
+      - "3307:3306"  # hostPort:containerPort
+    volumes:
+      - db_data:/var/lib/mysql
+
+  todo-api:
+    build: .
+    container_name: todo-api
+    depends_on:
+      - mysql-container
+    environment:
+      - SPRING_PROFILES_ACTIVE=docker
+      - DB_USER=springstudent
+      - DB_PASS=springstudent
+      - JWT_SECRET=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9_v3ryStr0ngK3y!2025!
+    ports:
+      - "8080:8080"
+
+volumes:
+  db_data:

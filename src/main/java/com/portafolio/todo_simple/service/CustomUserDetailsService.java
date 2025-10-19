@@ -1,7 +1,7 @@
 package com.portafolio.todo_simple.security;
 
 import com.portafolio.todo_simple.repository.UserRepository;
-import com.portafolio.todo_simple.model.User; // your entity
+import com.portafolio.todo_simple.model.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -21,7 +21,7 @@ public class CustomUserDetailsService implements UserDetailsService {
         User userEntity = userRepository.findByUsername(username)
                 .orElseThrow(() -> new UsernameNotFoundException("User not found: " + username));
 
-        // Fully qualified reference avoids ambiguity
+
         return org.springframework.security.core.userdetails.User.builder()
                 .username(userEntity.getUsername())
                 .password(userEntity.getPassword())
